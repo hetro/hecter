@@ -1,0 +1,39 @@
+<a href="<?=$this->url('profiling/action', array('action' => 'certificateofcover'))?>"><span class="btn btn-success fileinput-button btn-xs">
+            <i class="glyphicon glyphicon-plus"></i>
+            <span>Add Certificate of Cover</span>
+            
+        </span></a>
+
+<table class="table">
+	<tr bgcolor="#333333">
+    	<td style="color:white">No.</td>
+        <td style="color:white">Name of Assured</td>
+        <td style="color:white">Start of Insurance</td>
+        <td style="color:white">End of Insurance</td>
+        <td style="color:white">Isap Authentication No.</td>
+        <td style="color:white">Model</td>
+        <td style="color:white">Make</td>
+        <td style="color:white">Type of Body</td>
+        <td style="color:white"></td>
+    </tr>
+<?php foreach($list as $policy) :?>
+	<tr>
+    	<td><?=$policy->getNo()?></td>
+        <td><?=$policy->getName()?></td>
+        <td><?=$policy->getStartofinsurance()->format('M d, Y H:i A')?></td>
+        <td><?=$policy->getEndofinsurance()->format('M d, Y H:i A')?></td>
+        <td><?=$policy->getIsap()?></td>
+        <td><?=$policy->getModel()?></td>
+        <td><?=$policy->getMake()?></td>
+        <td><?=$policy->getTypeofbody()?></td>
+        <td><div class="btn-group">
+              <button type="button" class="btn btn-xs btn-danger dropdown-toggle" data-toggle="dropdown">
+                <span class="glyphicon glyphicon-cog"></span>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li><a href="<?=$this->url('profiling/action',array('action' => 'policy', 'id' => $policy->getId()))?>">Modify</a></li>
+              </ul>
+            </div></td>
+    </tr>
+<?php endforeach; ?>
+</table>

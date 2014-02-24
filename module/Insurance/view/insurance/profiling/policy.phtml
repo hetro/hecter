@@ -1,0 +1,110 @@
+<?php
+$title = 'Policy';
+$this->headTitle($title);
+
+$form = $this->form;
+
+$form->prepare();
+/* Styling */
+
+$form->get('policy')->get('no')->setAttribute('class','form-control')/*->setAttribute('placeholder','No')*/;
+
+$form->get('policy')->get('startofinsurance')->setAttribute('class','form-control')->setAttribute('id','startofinsurance');
+$form->get('policy')->get('endofinsurance')->setAttribute('class','form-control')->setAttribute('id','endofinsurance');
+
+$form->get('policy')->get('isap')->setAttribute('class','form-control');
+$form->get('policy')->get('lto')->setAttribute('class','form-control');
+$form->get('policy')->get('policy')->setAttribute('class','form-control');
+$form->get('policy')->get('name')->setAttribute('class','form-control');
+$form->get('policy')->get('address')->setAttribute('class','form-control');
+$form->get('policy')->get('businessandprofession')->setAttribute('class','form-control');
+$form->get('policy')->get('certificateofcover')->setAttribute('class','form-control');
+$form->get('policy')->get('dateissued')->setAttribute('class','form-control')->setAttribute('id','dateissued');
+$form->get('policy')->get('officialreceipt')->setAttribute('class','form-control');
+
+$form->get('policy')->get('make')->setAttribute('class','form-control');
+$form->get('policy')->get('model')->setAttribute('class','form-control');
+$form->get('policy')->get('typeofbody')->setAttribute('class','form-control');
+$form->get('policy')->get('color')->setAttribute('class','form-control');
+
+$form->get('policy')->get('bltfilenumber')->setAttribute('class','form-control');
+$form->get('policy')->get('platenumber')->setAttribute('class','form-control');
+$form->get('policy')->get('chassisnumber')->setAttribute('class','form-control');
+$form->get('policy')->get('motornumber')->setAttribute('class','form-control');
+$form->get('policy')->get('authorizedcapacity')->setAttribute('class','form-control');
+$form->get('policy')->get('unladenweight')->setAttribute('class','form-control');
+
+$form->get('policy')->get('premiumpaid')->setAttribute('class','form-control');
+$form->get('policy')->get('authenticationfee')->setAttribute('class','form-control');
+
+?>
+<h1 class="category-title"><?=$title?></h1>
+<?=$this->form()->openTag($form)?>
+<div class="row">
+	<div class="col-xs-12 col-sm-3">
+    
+    
+    Policy No. <?=$this->formRow($form->get('policy')->get('no'))?>
+    
+    Start of Insurance <?=$this->formRow($form->get('policy')->get('startofinsurance'))?>
+    End of Insurance <?=$this->formRow($form->get('policy')->get('endofinsurance'))?>
+    
+    ISAP Authentication No. <?=$this->formRow($form->get('policy')->get('isap'))?>
+    LTO Verification No. <?=$this->formRow($form->get('policy')->get('lto'))?>
+    Policy No. <?=$this->formRow($form->get('policy')->get('policy'))?>
+    Name <?=$this->formRow($form->get('policy')->get('name'))?>
+    Address <?=$this->formRow($form->get('policy')->get('address'))?>
+    Business & Profession <?=$this->formRow($form->get('policy')->get('businessandprofession'))?>
+    Certificate of Cover No.<?=$this->formRow($form->get('policy')->get('certificateofcover'))?>
+    Date Issued <?=$this->formRow($form->get('policy')->get('dateissued'))?>
+    Official Receipt No. <?=$this->formRow($form->get('policy')->get('officialreceipt'))?>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+    
+    Model <?=$this->formRow($form->get('policy')->get('model'))?>
+    Make <?=$this->formRow($form->get('policy')->get('make'))?>
+    Type of body <?=$this->formRow($form->get('policy')->get('typeofbody')->setAttribute('id','typeofbody'))?>
+    Color <?=$this->formRow($form->get('policy')->get('color'))?>
+    BLT File No. <?=$this->formRow($form->get('policy')->get('bltfilenumber'))?>
+    Plate No. <?=$this->formRow($form->get('policy')->get('platenumber'))?>
+    Chassis No. <?=$this->formRow($form->get('policy')->get('chassisnumber'))?>
+    Motor No. <?=$this->formRow($form->get('policy')->get('motornumber'))?>
+    Authorized Capacity <?=$this->formRow($form->get('policy')->get('authorizedcapacity'))?>
+    Unladen Weight <?=$this->formRow($form->get('policy')->get('unladenweight'))?>
+    <br />    
+    </div>
+    
+    <div class="col-xs-12 col-sm-3">
+    Premium Paid <?=$this->formRow($form->get('policy')->get('premiumpaid')->setAttribute('id','premiumpaid'))?>
+    Authentication Fee <?=$this->formRow($form->get('policy')->get('authenticationfee'))?>
+    VAT / Premium Tax <?=$policy->getVat()?> <br />
+    Doc. Stamps <?=$policy->getStamps()?> <br />
+    LGT <?=$policy->getLgt()?> <br />
+    Total Amount Due <?=$policy->getTotalamountdue()?>
+    </div>
+    <div class="col-xs-12 col-sm-3">
+    <input name="submit" type="submit" class="btn btn-lg btn-primary btn-block" />
+    </div>
+</div>
+<?=$this->form()->closeTag()?>
+<script type="text/javascript">
+$("#dateissued").datepicker({dateFormat:"yy-mm-dd"});
+$('#startofinsurance').datetimepicker({format:'Y-m-d H:i',});
+$('#endofinsurance').datetimepicker({format:'Y-m-d H:i',});
+
+$('#typeofbody').change(function(){
+	
+	switch($(this).val()){
+		
+		case 'Private Cars (including jeeps & utility vehicles)' : $('#premiumpaid').val(447.11); break;
+		case 'CV Light/Medium Trucks (own goods) not over 3930 kgs.' : $('#premiumpaid').val(487.03); break;
+		case 'Heavy Trucks (own goods) & Private Buses over 3930 kgs.' : $('#premiumpaid').val(958.08); break;
+		case 'AC & Tourist Cars' : $('#premiumpaid').val(590.82); break;
+		case 'Taxi, PUJ & Mini Bus' : $('#premiumpaid').val(878.24); break;
+		case 'PUB & Tourist Bus' : $('#premiumpaid').val(1157.69); break;
+		case 'Motorcycles/Tricycles/Trailers' : $('#premiumpaid').val(199.6); break;
+		default : $('#premiumpaid').val(250); break;
+	}
+	
+});
+</script>

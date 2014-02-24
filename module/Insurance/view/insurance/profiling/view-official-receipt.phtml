@@ -1,0 +1,24 @@
+<div class="row">
+	<div class="col-md-8 col-md-offset-2">
+    <center>
+<img src="/img/investors.jpg" />
+</center>
+    <center><h2>OFFICIAL RECEIPT</h2></center>
+    	<div class="row">
+        	<div class="col-md-6"></div>
+            <div class="col-md-6"><span class="pull-right">
+				<?php
+				$dateissued = new \DateTime($policy->getDateissued());
+				echo $dateissued->format('F d, Y');
+				?>
+            </span></div>
+        </div>
+        <br />
+        <div class="row">
+        	<div class="col-md-6"><strong>RECEIVED from</strong> <span style="text-decoration:underline"> <?=$policy->getName()?> </span></div>
+            <div class="col-md-6"><strong>Address</strong> <span style="text-decoration:underline"> <?=$policy->getAddress()?> </span></div>
+        </div>
+    </div>
+</div>
+
+
