@@ -23,11 +23,31 @@ class AddPolicyForm extends Form
 		$this->setValidationGroup(
 			array(
             	'policy' => array(
+					//'premiumpaid',
+					//'authenticationfee',
+					'authorizedcapacity',
+					'motornumber',
+					'chassisnumber',
+					'platenumber',
+					'bltfilenumber',
+					'color',
+					'typeofbody',
+					'make',
+					'model',
+					'officialreceipt',
+					'dateissued',
 					'no',
+					//'certificateofcover',
+					'businessandprofession',
+					'address',
+					'name',
+					'lto',
+					'isap',
+					'unladenweight',
 					'startofinsurance',
 					'endofinsurance',
-					'premiumpaid',
-					'authenticationfee',
+					
+					
 				)
 			)
 		);

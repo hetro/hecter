@@ -183,12 +183,6 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
             ),
         ));
 		
-		$this->add(array(
-            'name' => 'no',
-            'attributes' => array(
-                'type'  => 'text',
-            ),
-        ));
 		
 		$this->add(array(
             'name' => 'unladenweight',
@@ -251,7 +245,31 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
 	
 	public function getInputFilterSpecification(){
 		return array(
-           
+		   	'premiumpaid' => array('required' => true),
+			'authenticationfee' => array('required' => true),
+			'authorizedcapacity' => array('required' => true),
+			'motornumber' => array('required' => true),
+			'chassisnumber' => array('required' => true),
+			'platenumber' => array('required' => true),
+			'bltfilenumber' => array('required' => true),
+			'color' => array('required' => true),
+			'typeofbody' => array('required' => true),
+			'make' => array('required' => true),
+			'model' => array('required' => true),
+			'officialreceipt' => array('required' => true),
+			'dateissued' => array('required' => true),
+			'no' => array('required' => true),
+			'certificateofcover' => array('required' => true),
+			'businessandprofession' => array('required' => true),
+			'address' => array('required' => true),
+			'name' => array('required' => true),
+			'lto' => array('required' => true),
+			'isap' => array('required' => true),
+			'unladenweight' => array('required' => true),
+			'startofinsurance' => array('required' => true),
+			'endofinsurance' => array('required' => true),
+			'claimbodilyinjuries' => array('required' => true),
+			'claimdisablement' => array('required' => true),
         );
 	}
 
