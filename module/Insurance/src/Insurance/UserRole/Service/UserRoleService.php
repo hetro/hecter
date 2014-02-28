@@ -1,5 +1,5 @@
 <?php
-namespace Event\UserRole\Service;
+namespace Insurance\UserRole\Service;
 
 use Zend\Db\TableGateway\TableGateway;
 use Zend\Db\Sql\Select;

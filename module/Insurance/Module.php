@@ -4,7 +4,7 @@ namespace Insurance;
 use Zend\ModuleManager\Feature\AutoloaderProviderInterface;
 use Zend\ModuleManager\Feature\ConfigProviderInterface;
 
-use Event\UserRole\Service\UserRoleService;
+use Insurance\UserRole\Service\UserRoleService;
 
 class Module implements AutoloaderProviderInterface, ConfigProviderInterface
 {
