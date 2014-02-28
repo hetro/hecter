@@ -33,13 +33,17 @@ $end = new \DateTime($end);
         <td style="color:white">Isap</td>
         <td style="color:white">Policy No.</td>
         <td style="color:white">Date Issued</td>
-        <td style="color:white">End of Insurance</td>
+        <td style="color:white">Premium Paid</td>
+        <td style="color:white">Authentication Fee</td>
+        <td style="color:white">Documentary Stamps</td>
+        <td style="color:white">E-VAT</td>
+        <td style="color:white">Local Govt Tax</td>
         <td align="right" style="color:white">Total Amount Due</td>
     </tr>
     </thead>
     <?php if(!count($list)) : ?>
     <tr>
-    	<td colspan="7" align="center"><span class="label label-warning">No result</span></td>
+    	<td colspan="6" align="center"><span class="label label-warning">No result</span></td>
     </tr>
     <?php endif; ?>
     <tbody>
@@ -54,17 +58,15 @@ $end = new \DateTime($end);
         <td><?=$entry->getIsap()?></td>
         <td><?=$entry->getPolicy()?></td>
         <td><?=$entry->getDateissued()?></td>
-        <td><?=$entry->getEndofinsurance()->format('Y-m-d')?></td>
+        <td><?=$entry->getPremium()?></td>
+        <td><?=$entry->getAuthenticationfee()?></td>
+        <td><?=$entry->getVat()?></td>
+        <td><?=$entry->getLgt()?></td>
         <td align="right">&#8369; <?=$entry->getTotalamountdue()?></td>
     </tr>
 <?php endforeach; ?>
 	<tr>
-    	<td colspan="6"><p>The total no of insured vehicle from <?=$start->format('F j, Y')?> to <?=$end->format('F j, Y')?> 
-        is <span class="badge"><?=count($list)?></span></p>
-        
-        <blockquote>
-          <footer>Note - By means of this system it automatically generate or calculate the insured vehicle.</footer>
-        </blockquote>
+    	<td colspan="5">
         </td><td align="right"><span class="label label-info">Total</span> &#8369; <?=$total?></td>
     </tr>
 	</tbody>

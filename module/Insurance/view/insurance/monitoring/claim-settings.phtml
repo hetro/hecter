@@ -14,6 +14,7 @@
         <td style="color:white">Model</td>
         <td style="color:white">Make</td>
         <td style="color:white">Type of Body</td>
+        <td style="color:white">Claim Status</td>
         <td style="color:white"></td>
     </tr>
 <?php foreach($list as $policy) :?>
@@ -26,12 +27,15 @@
         <td><?=$policy->getModel()?></td>
         <td><?=$policy->getMake()?></td>
         <td><?=$policy->getTypeofbody()?></td>
+        <td><?=$policy->getClaimstatus()?></td>
         <td><div class="btn-group">
               <button type="button" class="btn btn-xs btn-danger dropdown-toggle" data-toggle="dropdown">
                 <span class="glyphicon glyphicon-cog"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
-                <li><a href="<?=$this->url('profiling/action',array('action' => 'policy', 'id' => $policy->getId()))?>">Modify</a></li>
+              
+              	<li><a href="<?=$this->url('profiling/action',array('action' => 'claim', 'id' => $policy->getId()))?>">Claim</a></li>
+                <li><a href="<?=$this->url('profiling/action',array('action' => 'certificateofcover', 'id' => $policy->getId()))?>">Modify</a></li>
               </ul>
             </div></td>
     </tr>

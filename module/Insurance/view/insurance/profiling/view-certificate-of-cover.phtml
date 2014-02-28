@@ -31,6 +31,7 @@
                 <span class="glyphicon glyphicon-cog"></span>
               </button>
               <ul class="dropdown-menu" role="menu">
+                <li><a href="<?=$this->url('profiling/action',array('action' => 'view-official-receipt', 'id' => $cover->getId()))?>">View Official Receipt</a></li>
                 <li><a href="<?=$this->url('profiling/action',array('action' => 'certificateofcover', 'id' => $cover->getId()))?>">Modify</a></li>
               </ul>
             </div></td>

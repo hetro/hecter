@@ -5,11 +5,11 @@ use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 use Zend\Form\Form;
 
-class AddPolicyForm extends Form
+class ClaimForm extends Form
 {
     public function __construct(ObjectManager $objectManager)
     {
-        parent::__construct('form-policy');
+        parent::__construct('form-claim');
 
         $this->setHydrator( new DoctrineHydrator($objectManager, 'Insurance\Entity\Policy') );
 
@@ -23,11 +23,9 @@ class AddPolicyForm extends Form
 		$this->setValidationGroup(
 			array(
             	'policy' => array(
-					'no',
-					'startofinsurance',
-					'endofinsurance',
-					'premiumpaid',
-					'authenticationfee',
+					'claimbodilyinjuries',
+					'claimdisablement',
+					#'price',
 				)
 			)
 		);

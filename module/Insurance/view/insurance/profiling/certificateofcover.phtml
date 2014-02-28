@@ -16,11 +16,10 @@ $form->get('policy')->get('endofinsurance')->setAttribute('class','form-control'
 
 $form->get('policy')->get('isap')->setAttribute('class','form-control');
 $form->get('policy')->get('lto')->setAttribute('class','form-control');
-$form->get('policy')->get('policy')->setAttribute('class','form-control');
+
 $form->get('policy')->get('name')->setAttribute('class','form-control');
 $form->get('policy')->get('address')->setAttribute('class','form-control');
 $form->get('policy')->get('businessandprofession')->setAttribute('class','form-control');
-$form->get('policy')->get('certificateofcover')->setAttribute('class','form-control');
 $form->get('policy')->get('dateissued')->setAttribute('class','form-control')->setAttribute('id','dateissued');
 $form->get('policy')->get('officialreceipt')->setAttribute('class','form-control');
 
@@ -45,19 +44,17 @@ $form->get('policy')->get('authenticationfee')->setAttribute('class','form-contr
 <div class="row">
 	<div class="col-xs-12 col-sm-3">
     
-    
-    Policy No. <?=$this->formRow($form->get('policy')->get('no'))?>
+    No. <?=$this->formRow($form->get('policy')->get('no'))?>
     
     Start of Insurance <?=$this->formRow($form->get('policy')->get('startofinsurance'))?>
     End of Insurance <?=$this->formRow($form->get('policy')->get('endofinsurance'))?>
     
     ISAP Authentication No. <?=$this->formRow($form->get('policy')->get('isap'))?>
     LTO Verification No. <?=$this->formRow($form->get('policy')->get('lto'))?>
-    Policy No. <?=$this->formRow($form->get('policy')->get('policy'))?>
+    
     Name <?=$this->formRow($form->get('policy')->get('name'))?>
     Address <?=$this->formRow($form->get('policy')->get('address'))?>
     Business & Profession <?=$this->formRow($form->get('policy')->get('businessandprofession'))?>
-    Certificate of Cover No.<?=$this->formRow($form->get('policy')->get('certificateofcover'))?>
     Date Issued <?=$this->formRow($form->get('policy')->get('dateissued'))?>
     Official Receipt No. <?=$this->formRow($form->get('policy')->get('officialreceipt'))?>
     </div>

@@ -14,7 +14,8 @@ use Zend\View\Model\ViewModel;
 
 class ProfilingController extends AbstractActionController
 {
-	public function claimSettingsAction(){
+	
+	public function claimAction(){
 		if (!$this->zfcUserAuthentication()->hasIdentity()) {			
 			
 			$redirect = $this->getRequest()->getRequestUri();			
@@ -24,12 +25,48 @@ class ProfilingController extends AbstractActionController
 			));
         }
 		
+		$id = (int) $this->params()->fromRoute('id', 0);
 		$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-		$query = $objectManager->createQuery("SELECT c FROM Insurance\Entity\Policy c ORDER BY c.id DESC");
-		$list = $query->getResult();
 		
-		return array('list' => $list);	
+		// Create the form and inject the ObjectManager
+		$form = new \Insurance\Form\ClaimForm($objectManager);
+		
+		$policy = $objectManager->getRepository('Insurance\Entity\Policy')->find( $id );
+		
+		$form->bind($policy);
+		
+		if ($this->request->isPost()) {
+			$form->setData($this->request->getPost());
+			
+			if ($form->isValid()) {
+				
+				foreach($policy->getClaimBodilyInjuries() as $claim){
+						$tmp = $claim->getReimbursablefee();
+						if(empty($tmp)) $policy->removeClaimbodilyinjury($claim);
+				}
+				
+				foreach($policy->getClaimDisablement() as $claim){
+						$tmp = $claim->getAmount();
+						if(empty($tmp)) $policy->removeClaimdisablementSingle($claim);
+				}
+				
+				
+				if (count($policy->getClaimBodilyInjuries())+count($policy->getClaimDisablement()) > 0)
+				$policy->setClaimstatus('Claimed');
+				
+				$objectManager->flush();
+				
+				return $this->redirect()->toRoute('monitoring/action', array( 'action' => 'claim-settings' ));
+			}
+		}
+		
+	
+		return array('form' => $form , 'policy' => $policy );
+		
+		
 	}
+	
+	
 	
 	public function viewCertificateOfCoverAction(){
 		if (!$this->zfcUserAuthentication()->hasIdentity()) {			
@@ -76,6 +113,8 @@ class ProfilingController extends AbstractActionController
 		else $policy = $objectManager->getRepository('Insurance\Entity\Policy')->find( $id );
 		
 		$form->bind($policy);
+		
+		$objectManager->persist($policy);
 		
 		if ($this->request->isPost()) {
 			$form->setData($this->request->getPost());

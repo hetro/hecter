@@ -18,6 +18,19 @@
         	<div class="col-md-6"><strong>RECEIVED from</strong> <span style="text-decoration:underline"> <?=$policy->getName()?> </span></div>
             <div class="col-md-6"><strong>Address</strong> <span style="text-decoration:underline"> <?=$policy->getAddress()?> </span></div>
         </div>
+        <div class="row">
+        	<div class="col-md-12">Policy No : <strong><?=$policy->getNo()?></strong></div>
+        </div>
+        
+        <table class="table table-bordered">
+        	<tr><td>PREMIUM</td><td><?=$policy->getPremiumpaid()?></td></tr>
+            <tr><td>AUTHENTICATION FEE</td><td><?=$policy->getAuthenticationfee()?></td></tr>
+            <tr><td>DOCUMENTARY STAMPS</td><td><?=$policy->getStamps()?></td></tr>
+            <tr><td>E-VAT</td><td><?=$policy->getVat()?></td></tr>
+            <tr><td>LOCAL GOVT TAX</td><td><?=$policy->getLgt()?></td></tr>
+            
+            <tr><td align="right">TOTAL</td><td><?=$policy->getTotalamountdue()?></td></tr>
+        </table>
     </div>
 </div>
 

@@ -14,7 +14,6 @@ $form->get('policy')->get('endofinsurance')->setAttribute('class','form-control'
 
 $form->get('policy')->get('isap')->setAttribute('class','form-control');
 $form->get('policy')->get('lto')->setAttribute('class','form-control');
-$form->get('policy')->get('policy')->setAttribute('class','form-control');
 $form->get('policy')->get('name')->setAttribute('class','form-control');
 $form->get('policy')->get('address')->setAttribute('class','form-control');
 $form->get('policy')->get('businessandprofession')->setAttribute('class','form-control');
@@ -51,7 +50,6 @@ $form->get('policy')->get('authenticationfee')->setAttribute('class','form-contr
     
     ISAP Authentication No. <?=$this->formRow($form->get('policy')->get('isap'))?>
     LTO Verification No. <?=$this->formRow($form->get('policy')->get('lto'))?>
-    Policy No. <?=$this->formRow($form->get('policy')->get('policy'))?>
     Name <?=$this->formRow($form->get('policy')->get('name'))?>
     Address <?=$this->formRow($form->get('policy')->get('address'))?>
     Business & Profession <?=$this->formRow($form->get('policy')->get('businessandprofession'))?>

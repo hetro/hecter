@@ -168,14 +168,7 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
                 'type'  => 'text',
             ),
         ));
-		
-		$this->add(array(
-            'name' => 'policy',
-            'attributes' => array(
-                'type'  => 'text',
-            ),
-        ));
-		
+				
 		$this->add(array(
             'name' => 'lto',
             'attributes' => array(
@@ -233,6 +226,26 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
 			 )
 		 )
 		);
+		
+		$claim = new ClaimBodilyInjuriesFieldset($objectManager);
+        $this->add(array(
+            'type'    => 'Zend\Form\Element\Collection',
+            'name'    => 'claimbodilyinjuries',
+            'options' => array(
+                'count'           => 1,
+                'target_element' => $claim
+            )
+        ));
+		
+		$claim = new ClaimDisablementFieldset($objectManager);
+        $this->add(array(
+            'type'    => 'Zend\Form\Element\Collection',
+            'name'    => 'claimdisablement',
+            'options' => array(
+                'count'           => 1,
+                'target_element' => $claim
+            )
+        ));
 		
     }
 	

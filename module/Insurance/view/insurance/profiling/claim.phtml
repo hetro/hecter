@@ -1,0 +1,101 @@
+<?php
+$title = 'Claim';
+$this->headTitle($title);
+
+$form = $this->form;
+
+$form->prepare();
+/* Styling */
+
+#$form->get('policy')->get('no')->setAttribute('class','form-control')/*->setAttribute('placeholder','No')*/;
+
+
+?>
+<h1 class="category-title"><?=$title?></h1>
+<?=$this->form()->openTag($form)?>
+<div class="row">
+	<div class="col-md-12">
+    <span class="btn btn-success fileinput-button btn-xs add-claimbodilyinjuries">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>Add</span>
+    </span>
+    BODILY INJURIES AND FRACTURES
+    <table id="claimbodilyinjuries" class="table table-bordered">
+    	<tr bgcolor="#333333">
+        	<td style="color:white;" align="center">Professional</td>
+            <td style="color:white;" align="center">Types of Accomodation or Services Rendered</td>
+            <td style="color:white;" align="center">Maximum Reimbursable Fees and/or Charges</td>
+        </tr>
+	<?php foreach($form->get('policy')->get('claimbodilyinjuries') as $claim) : 
+				$claim->get('professional')->setAttribute('class','form-control');
+				$claim->get('servicesrendered')->setAttribute('class','form-control');
+				$claim->get('reimbursablefee')->setAttribute('class','form-control');
+	?>
+    	<tr class="tpl_claimbodilyinjuries"><td><?=$this->formRow($claim->get('professional'))?></td>
+        	<td><?=$this->formRow($claim->get('servicesrendered'))?></td>
+            <td><?=$this->formRow($claim->get('reimbursablefee'))?></td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
+    
+    <span class="btn btn-success fileinput-button btn-xs add-claimdisable">
+        <i class="glyphicon glyphicon-plus"></i>
+        <span>Add</span>
+    </span>
+    PERMANENT DIISABLEMENT
+    <table id="claimdisablement" class="table table-bordered">
+    	<tr bgcolor="#333333">
+        	<td style="color:white;" align="center">Loss of or Loss of Use of</td>
+            <td style="color:white;" align="center">Amount</td>
+        </tr>
+	<?php foreach($form->get('policy')->get('claimdisablement') as $claim) : 
+				$claim->get('loss')->setAttribute('class','form-control');
+				$claim->get('amount')->setAttribute('class','form-control');
+	?>
+    	<tr class="tpl_claimdisablement">
+        	<td><?=$this->formRow($claim->get('loss'))?></td>
+        	<td><?=$this->formRow($claim->get('amount'))?></td>
+        </tr>
+    <?php endforeach; ?>
+    </table>
+    
+   <input name="submit" type="submit" class="btn btn-lg btn-primary btn-block" />
+    </div>
+   
+</div>
+<?=$this->form()->closeTag()?>
+
+<script type="text/javascript">
+
+var template = $('#claimbodilyinjuries .tpl_claimbodilyinjuries:first').clone();
+var template2 = $('#claimdisablement .tpl_claimdisablement:first').clone()
+
+var addBodilyinjuries = function(){
+	var i = $('#claimbodilyinjuries .tpl_claimbodilyinjuries').length;
+	var entry = template.clone();
+	
+	var replaced = entry.html().replace(/[0-9]/g,i);
+	entry.html(replaced);
+	entry.find('input[type=text]').val('');
+	entry.appendTo('#claimbodilyinjuries');
+};
+
+var addDisablement = function(){
+	var i = $('#claimdisablement .tpl_claimdisablement').length;
+	var entry = template2.clone();
+	
+	var replaced = entry.html().replace(/[0-9]/g,i);
+	entry.html(replaced);
+	entry.find('input[type=text]').val('');
+	entry.appendTo('#claimdisablement');
+};
+
+$('.add-claimbodilyinjuries').click(addBodilyinjuries);
+$('.add-claimdisable').click(addDisablement);
+
+//$("#claimbodilyinjuries").on("click","tr",function(){alert('asd')});
+
+
+
+</script>
+

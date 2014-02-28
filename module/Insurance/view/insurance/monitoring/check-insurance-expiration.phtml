@@ -1,0 +1,48 @@
+<?php $this->headScript()->prependFile($this->basePath() . '/js/jquery.print.js')?>
+<h1>Check Insurance Expiration</h1>
+<div class="printable">
+<?php 
+$start = new \DateTime($start);
+$end = new \DateTime($end);
+?>
+<?=$start->format('F j, Y')?> - <?=$end->format('F j, Y')?>
+<table class="table table-striped table-hover">
+	<thead>
+	<tr bgcolor="#666">
+    	<td style="color:white">No</td>
+        <td style="color:white">Name</td>
+        <td style="color:white">Isap</td>
+        <td style="color:white">Policy No.</td>
+        <td style="color:white">Date Issued</td>
+        <td style="color:white">End of Insurance</td>
+    </tr>
+    </thead>
+    <?php if(!count($list)) : ?>
+    <tr>
+    	<td colspan="6" align="center"><span class="label label-warning">No Expiration</span></td>
+    </tr>
+    <?php endif; ?>
+    <tbody>
+<?php
+	$total = 0; 
+	foreach($list as $entry) : 
+?>
+	<tr>
+    	<td><?=$entry->getNo()?></td>
+        <td><?=$entry->getName()?></td>
+        <td><?=$entry->getIsap()?></td>
+        <td><?=$entry->getPolicy()?></td>
+        <td><?=$entry->getDateissued()?></td>
+        <td><?=$entry->getEndofinsurance()->format('Y-m-d')?></td>
+    </tr>
+<?php endforeach; ?>
+	
+	</tbody>
+</table>
+
+</div>
+<script type="text/javascript">
+$("#start").datepicker({dateFormat:'yy-mm-dd'});
+$("#end").datepicker({dateFormat:'yy-mm-dd'});
+$("#print").click(function(){	$(".printable").print()});
+</script>

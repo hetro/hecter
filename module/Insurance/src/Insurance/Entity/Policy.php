@@ -164,8 +164,31 @@ class Policy {
 	 */
 	protected $totalamountdue = '0.00';
 	
+	/**
+     * @ORM\OneToMany(targetEntity="Insurance\Entity\ClaimBodilyInjuries", mappedBy="policy", cascade={"all"})
+     */
+    protected $claimbodilyinjuries;
+	
+	/**
+     * @ORM\OneToMany(targetEntity="Insurance\Entity\ClaimDisablement", mappedBy="policy", cascade={"all"})
+     */
+    protected $claimdisablement;
+	
+	/**
+     * @ORM\Column(type="string", nullable=true)
+     */
+    protected $claimstatus = null;
+	
 	public function getId(){
 		return $this->id;
+	}
+	
+	public function getClaimstatus(){
+		return $this->claimstatus;
+	}
+	
+	public function setClaimstatus($claimstatus){
+		$this->claimstatus = $claimstatus;
 	}
 	
 	public function getPremiumpaid(){
@@ -402,12 +425,77 @@ class Policy {
 		$this->endofinsurance = $date;
 	}
 	
-	public function exchangeArray($data)
+	
+	
+	/**
+     * @param Collection $claimbodilyinjuries
+     */
+    public function addClaimbodilyinjuries(Collection $claimbodilyinjuries)
     {
-		$this->id     = (isset($data['id'])) ? $data['id'] : 0;
-        $this->name = (isset($data['name'])) ? $data['name'] : null;
-		$this->datecreated  = (isset($data['datecreated'])) ? $data['datecreated'] : null;
+        foreach ($claimbodilyinjuries as $claimbodilyinjury) {
+			$claimbodilyinjury->setPolicy($this);
+            $this->claimbodilyinjuries->add($claimbodilyinjury);
+        }
     }
+
+    /**
+     * @param Collection $claimbodilyinjuries
+     */
+    public function removeClaimbodilyinjuries(Collection $claimbodilyinjuries)
+    {
+        foreach ($claimbodilyinjuries as $claimbodilyinjury) {
+            $claimbodilyinjury->setPolicy(null);
+            $this->claimbodilyinjuries->removeElement($claimbodilyinjury);
+        }
+    }
+
+    /**
+     * @return Collection $claimbodilyinjuries
+     */
+    public function getClaimbodilyinjuries()
+    {
+        return $this->claimbodilyinjuries;
+    }
+	
+	public function removeClaimbodilyinjury(Claimbodilyinjuries $claimbodilyinjury){
+		$claimbodilyinjury->setPolicy(null);
+        $this->claimbodilyinjuries->removeElement($claimbodilyinjury);
+	}
+	
+	/**
+     * @param Collection $claimdisablement
+     */
+    public function addClaimdisablement(Collection $claimdisablements)
+    {
+        foreach ($claimdisablements as $claimdisablement) {
+			$claimdisablement->setPolicy($this);
+            $this->claimdisablement->add($claimdisablement);
+        }
+    }
+
+    /**
+     * @param Collection $claimdisablement
+     */
+    public function removeClaimdisablement(Collection $claimdisablements)
+    {
+        foreach ($claimdisablements as $claimdisablement) {
+            $claimdisablement->setPolicy(null);
+            $this->claimdisablement->removeElement($claimdisablement);
+        }
+    }
+
+    /**
+     * @return Collection $claimdisablement
+     */
+    public function getClaimdisablement()
+    {
+        return $this->claimdisablement;
+    }
+	
+	public function removeClaimdisablementSingle(Claimdisablement $claimdisablement){
+		$claimdisablement->setPolicy(null);
+        $this->claimdisablement->removeElement($claimdisablement);
+	}
 	
 	public function getArrayCopy()
     {

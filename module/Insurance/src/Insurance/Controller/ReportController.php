@@ -25,4 +25,48 @@ class ReportController extends AbstractActionController
 			));
         }
 	}
+	
+	public function productionReportAction(){
+		if (!$this->zfcUserAuthentication()->hasIdentity()) {			
+			
+			$redirect = $this->getRequest()->getRequestUri();			
+			$this->getRequest()->getQuery()->set('redirect', $redirect);
+			return $this->forward()->dispatch('zfcuser', array(
+				'action' => 'login'
+			));
+        }
+		
+		$month = $this->getRequest()->getQuery('month');
+		if(empty($month)) $month = new \DateTime("now"); 
+		else $month = new \DateTime($month);
+		
+		
+		$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+		$query = $objectManager->createQuery("SELECT c FROM Insurance\Entity\Policy c WHERE c.dateissued LIKE '".$month->format('Y-m')."%' ORDER BY c.id DESC");
+		$list = $query->getResult();
+		
+		return array('list' => $list, 'month' => $month );
+	}
+	
+	public function collectionReportAction(){
+		if (!$this->zfcUserAuthentication()->hasIdentity()) {			
+			
+			$redirect = $this->getRequest()->getRequestUri();			
+			$this->getRequest()->getQuery()->set('redirect', $redirect);
+			return $this->forward()->dispatch('zfcuser', array(
+				'action' => 'login'
+			));
+        }
+		
+		$month = $this->getRequest()->getQuery('month');
+		if(empty($month)) $month = new \DateTime("now"); 
+		else $month = new \DateTime($month);
+		
+		
+		$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+		$query = $objectManager->createQuery("SELECT c FROM Insurance\Entity\Policy c WHERE c.dateissued LIKE '".$month->format('Y-m')."%' ORDER BY c.id DESC");
+		$list = $query->getResult();
+		
+		return array('list' => $list, 'month' => $month );
+	}
 }
