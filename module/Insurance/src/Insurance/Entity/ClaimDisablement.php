@@ -19,7 +19,7 @@ class ClaimDisablement {
     protected $id;
 	
 	/**
-     * @ORM\ManyToOne(targetEntity="Insurance\Entity\Policy", inversedBy="claim", cascade={"all"})
+     * @ORM\ManyToOne(targetEntity="Insurance\Entity\Policy", inversedBy="claimdisablement", cascade={"all"})
      */
     protected $policy;
 	
