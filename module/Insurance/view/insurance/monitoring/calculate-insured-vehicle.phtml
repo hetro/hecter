@@ -38,7 +38,7 @@ $end = new \DateTime($end);
     </thead>
     <?php if(!count($list)) : ?>
     <tr>
-    	<td colspan="7" align="center"><span class="label label-warning">No result</span></td>
+    	<td colspan="6" align="center"><span class="label label-warning">No result</span></td>
     </tr>
     <?php endif; ?>
     <tbody>
@@ -57,7 +57,7 @@ $end = new \DateTime($end);
     </tr>
 <?php endforeach; ?>
 	<tr>
-    	<td colspan="6"><p>The total no of insured vehicle from <?=$start->format('F j, Y')?> to <?=$end->format('F j, Y')?> 
+    	<td colspan="5"><p>The total no of insured vehicle from <?=$start->format('F j, Y')?> to <?=$end->format('F j, Y')?> 
         is <span class="badge"><?=count($list)?></span></p>
         
         <blockquote>
