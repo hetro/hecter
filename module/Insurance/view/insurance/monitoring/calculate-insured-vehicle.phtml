@@ -31,7 +31,6 @@ $end = new \DateTime($end);
     	<td style="color:white">No</td>
         <td style="color:white">Name</td>
         <td style="color:white">Isap</td>
-        <td style="color:white">Policy No.</td>
         <td style="color:white">Date Issued</td>
         <td style="color:white">End of Insurance</td>
         <td align="right" style="color:white">Total Amount Due</td>
@@ -52,7 +51,6 @@ $end = new \DateTime($end);
     	<td><?=$entry->getNo()?></td>
         <td><?=$entry->getName()?></td>
         <td><?=$entry->getIsap()?></td>
-        <td><?=$entry->getPolicy()?></td>
         <td><?=$entry->getDateissued()?></td>
         <td><?=$entry->getEndofinsurance()->format('Y-m-d')?></td>
         <td align="right">&#8369; <?=$entry->getTotalamountdue()?></td>
