@@ -78,7 +78,10 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
 			 'Blue' => 'Blue',
 			 'Black' => 'Black',
 			 'Red' => 'Red',
-			 'etc' => 'etc',
+			 'Orange' => 'Orange',
+			 'Yellow' => 'Yellow',
+			 'Green' => 'Green',
+			 'Grey' => 'Grey',
 		));
 		$this->add($select);
 		
@@ -99,8 +102,19 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
 		$select = new Element\Select('make');
 		$select->setEmptyOption('Select Make');
 		$select->setValueOptions(array(
-			 'Honda' => 'Honda',
-			 'Kawasaki' => 'Kawasaki',
+			'Volkswagen' => 'Volkswagen',
+			'Hyundai' => 'Hyundai',
+			'Buick' => 'Buick',
+			'Chevrolet' => 'Chevrolet',
+			'Toyota' => 'Toyota',
+			'Nissan' => 'Nissan',
+			'Great Wall' => 'Great Wall',
+			'BYD' => 'BYD',
+			'Kia' => 'Kia',
+			'Honda' => 'Honda',
+			'Cherry' => 'Cherry',
+			'Ford' => 'Ford',
+			'Kawasaki' => 'Kawasaki',
 		));
 		$this->add($select);
 		
@@ -120,12 +134,6 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
 		));
 		$this->add($select);
 		
-		$this->add(array(
-            'name' => 'officialreceipt',
-            'attributes' => array(
-                'type'  => 'text',
-            ),
-        ));
 		
 		$this->add(array(
             'name' => 'dateissued',
@@ -249,23 +257,43 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
 			'authenticationfee' => array('required' => true),
 			'authorizedcapacity' => array('required' => true),
 			'motornumber' => array('required' => true),
-			'chassisnumber' => array('required' => true),
-			'platenumber' => array('required' => true),
-			'bltfilenumber' => array('required' => true),
+			'chassisnumber' => array(
+				'required' => true,
+				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 11))),
+			),
+			'platenumber' => array(
+				'required' => true,
+				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 6))),
+			),
+			'bltfilenumber' => array(
+				'required' => true,
+				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 10))),
+			),
 			'color' => array('required' => true),
 			'typeofbody' => array('required' => true),
 			'make' => array('required' => true),
-			'model' => array('required' => true),
-			'officialreceipt' => array('required' => true),
+			'model' => array(
+				'required' => true,
+				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 10))),
+			),
 			'dateissued' => array('required' => true),
-			'no' => array('required' => true),
+			'no' => array(
+				'required' => true,
+				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 15))),
+			),
 			'certificateofcover' => array('required' => true),
 			'businessandprofession' => array('required' => true),
 			'address' => array('required' => true),
 			'name' => array('required' => true),
 			'lto' => array('required' => true),
-			'isap' => array('required' => true),
-			'unladenweight' => array('required' => true),
+			'isap' => array(
+				'required' => true,
+				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 15))),
+			),
+			'unladenweight' => array(
+				'required' => true,
+				'validators' => array( new \Zend\Validator\Between( array('min' => 1, 'max' => '5000'))),
+			),
 			'startofinsurance' => array('required' => true),
 			'endofinsurance' => array('required' => true),
 			'claimbodilyinjuries' => array('required' => true),

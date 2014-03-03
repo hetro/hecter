@@ -1,8 +1,11 @@
+<?php $this->headScript()->prependFile($this->basePath() . '/js/jquery.print.js')?>
+
+
 <div class="row">
 	<div class="col-md-8 col-md-offset-2">
-    <center>
-<img src="/img/investors.jpg" />
-</center>
+    <button id="print" class="btn btn-primary">Print</button>
+    <div class="printable">
+    <center><img src="/img/investors.jpg" /></center>
     <center><h2>OFFICIAL RECEIPT</h2></center>
     	<div class="row">
         	<div class="col-md-6"></div>
@@ -15,13 +18,14 @@
         </div>
         <br />
         <div class="row">
-        	<div class="col-md-6"><strong>RECEIVED from</strong> <span style="text-decoration:underline"> <?=$policy->getName()?> </span></div>
-            <div class="col-md-6"><strong>Address</strong> <span style="text-decoration:underline"> <?=$policy->getAddress()?> </span></div>
+        	<div class="col-md-6"><span style="float:left;"><strong>RECEIVED from</strong> <span style="text-decoration:underline"> <?=$policy->getName()?></span> </span></div>
+            <div class="col-md-6"><span style="float:right"><strong>Address</strong> <span style="text-decoration:underline"> <?=$policy->getAddress()?> </span></span></div>
         </div>
+        <br />
         <div class="row">
         	<div class="col-md-12">Policy No : <strong><?=$policy->getNo()?></strong></div>
         </div>
-        
+        <br />
         <table class="table table-bordered">
         	<tr><td>PREMIUM</td><td><?=$policy->getPremiumpaid()?></td></tr>
             <tr><td>AUTHENTICATION FEE</td><td><?=$policy->getAuthenticationfee()?></td></tr>
@@ -31,7 +35,14 @@
             
             <tr><td align="right">TOTAL</td><td><?=$policy->getTotalamountdue()?></td></tr>
         </table>
+        
+        <br />
+        <span style="float:right">_________________________________</span><br />
+        <span style="float:right">CASHIER'S SIGNATION OVER NAME</span>
+        </div>
     </div>
 </div>
 
-
+<script type="text/javascript">
+$("#print").click(function(){	$(".printable").print()});
+</script>

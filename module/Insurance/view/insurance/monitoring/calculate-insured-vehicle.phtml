@@ -72,7 +72,7 @@ $end = new \DateTime($end);
 
 </div>
 <script type="text/javascript">
-$("#start").datepicker({dateFormat:'yy-mm-dd'});
-$("#end").datepicker({dateFormat:'yy-mm-dd'});
+$("#start").datepicker({dateFormat:'yy-mm-dd',changeMonth: true,changeYear: true});
+$("#end").datepicker({dateFormat:'yy-mm-dd',changeMonth: true,changeYear: true});
 $("#print").click(function(){	$(".printable").print()});
 </script>

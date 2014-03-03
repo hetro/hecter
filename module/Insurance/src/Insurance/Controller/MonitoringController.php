@@ -62,18 +62,17 @@ class MonitoringController extends AbstractActionController
 				'action' => 'login'
 			));
         }
-		$start = $this->getRequest()->getQuery('start');
-		$end = $this->getRequest()->getQuery('end');
-		$tmp = new \DateTime("now");
-		if(empty($start)) $start = $tmp->format('Y-m-d');
-		if(empty($end)) $end = $tmp->format('Y-m-d');
+		
 		
 		$now = new \DateTime("now");
+		$start = $now->format('Y-m-d H:i:s');
+		$end = $now->modify('+1 week')->format('Y-m-d H:i:s');
+		
 		
 		$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
 		$query = $objectManager->createQuery("SELECT c FROM Insurance\Entity\Policy c WHERE c.endofinsurance > ?1 AND c.endofinsurance < ?2 ORDER BY c.endofinsurance ASC");
-		$query->setParameter(1, $now->format('Y-m-d H:i:s'));
-		$query->setParameter(2, $now->modify('+1 week')->format('Y-m-d H:i:s'));
+		$query->setParameter(1, $start);
+		$query->setParameter(2, $end);
 		$list = $query->getResult();
 		
 		return array('list' => $list, 'start' => $start , 'end' => $end);

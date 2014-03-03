@@ -21,7 +21,6 @@ $form->get('policy')->get('name')->setAttribute('class','form-control');
 $form->get('policy')->get('address')->setAttribute('class','form-control');
 $form->get('policy')->get('businessandprofession')->setAttribute('class','form-control');
 $form->get('policy')->get('dateissued')->setAttribute('class','form-control')->setAttribute('id','dateissued');
-$form->get('policy')->get('officialreceipt')->setAttribute('class','form-control');
 
 $form->get('policy')->get('make')->setAttribute('class','form-control');
 $form->get('policy')->get('model')->setAttribute('class','form-control');
@@ -56,7 +55,6 @@ $form->get('policy')->get('authenticationfee')->setAttribute('class','form-contr
     Address <?=$this->formRow($form->get('policy')->get('address'))?>
     Business & Profession <?=$this->formRow($form->get('policy')->get('businessandprofession'))?>
     Date Issued <?=$this->formRow($form->get('policy')->get('dateissued'))?>
-    Official Receipt No. <?=$this->formRow($form->get('policy')->get('officialreceipt'))?>
     </div>
     <div class="col-xs-12 col-sm-3">
     
@@ -94,7 +92,10 @@ $form->get('policy')->get('authenticationfee')->setAttribute('class','form-contr
 <script type="text/javascript">
 $("#dateissued").datepicker({dateFormat:"yy-mm-dd"});
 $('#startofinsurance').datetimepicker({format:'Y-m-d H:i',});
-$('#endofinsurance').datetimepicker({format:'Y-m-d H:i',});
+$('#endofinsurance').datetimepicker({
+	format:'Y-m-d H:i',
+	yearOffset: 1,
+});
 
 $('#typeofbody').change(function(){
 	console.log($(this).val());
