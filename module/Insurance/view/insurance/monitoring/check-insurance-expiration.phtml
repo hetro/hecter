@@ -12,14 +12,13 @@ $end = new \DateTime($end);
     	<td style="color:white">No</td>
         <td style="color:white">Name</td>
         <td style="color:white">Isap</td>
-        <td style="color:white">Policy No.</td>
         <td style="color:white">Date Issued</td>
         <td style="color:white">End of Insurance</td>
     </tr>
     </thead>
     <?php if(!count($list)) : ?>
     <tr>
-    	<td colspan="6" align="center"><span class="label label-warning">No Expiration</span></td>
+    	<td colspan="5" align="center"><span class="label label-warning">No Expiration</span></td>
     </tr>
     <?php endif; ?>
     <tbody>
@@ -31,7 +30,6 @@ $end = new \DateTime($end);
     	<td><?=$entry->getNo()?></td>
         <td><?=$entry->getName()?></td>
         <td><?=$entry->getIsap()?></td>
-        <td><?=$entry->getPolicy()?></td>
         <td><?=$entry->getDateissued()?></td>
         <td><?=$entry->getEndofinsurance()->format('Y-m-d')?></td>
     </tr>
