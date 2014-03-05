@@ -24,7 +24,7 @@
 $start = new \DateTime($start);
 $end = new \DateTime($end);
 ?>
-<?php if($start->format('F j, Y') == $end->format('F j, Y')) : ?>
+<?php if($start->format('F j, Y') != $end->format('F j, Y')) : ?>
 <?=$start->format('F j, Y')?> - <?=$end->format('F j, Y')?>
 <?php endif; ?>
 <table class="table table-striped table-hover">
