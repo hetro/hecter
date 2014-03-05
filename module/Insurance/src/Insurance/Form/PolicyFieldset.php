@@ -285,7 +285,10 @@ class PolicyFieldset extends Fieldset implements InputFilterProviderInterface
 			'businessandprofession' => array('required' => true),
 			'address' => array('required' => true),
 			'name' => array('required' => true),
-			'lto' => array('required' => true),
+			'lto' => array(
+				'required' => true,
+				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 15))),
+			),
 			'isap' => array(
 				'required' => true,
 				'validators' => array(new \Zend\Validator\StringLength(array( 'min' => 1, 'max' => 15))),
