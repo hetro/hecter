@@ -36,3 +36,9 @@ div.container a.brand {
     margin-left: 0;
     padding: 8px 20px 12px 40px;
 }
+
+.banner {
+	background: url("../img/banner.jpg");
+	background-repeat:no-repeat;
+	background-size:cover;
+}

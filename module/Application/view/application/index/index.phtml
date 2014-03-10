@@ -1,19 +1,30 @@
-<div class="jumbotron">
-    <h1><?php echo sprintf($this->translate('Welcome to %sInvestors Assurance%s'), '<span class="zf-green">', '</span>') ?></h1>
-    <p><?php echo sprintf($this->translate('Congratulations! You have successfully installed the %sZF2 Skeleton Application%s. You are currently running Zend Framework version %s. This skeleton can serve as a simple starting point for you to begin building your application on ZF2.'), '<a href="https://github.com/zendframework/ZendSkeletonApplication" target="_blank">', '</a>', \Zend\Version\Version::VERSION) ?></p>
-    <p><a class="btn btn-success btn-lg" href="https://github.com/zendframework/zf2" target="_blank"><?php echo $this->translate('Fork Zend Framework 2 on GitHub') ?> &raquo;</a></p>
+<style>
+
+.silo {
+    background: rgb(54, 25, 25); /* Fall-back for browsers that don't
+                                    support rgba */
+    background: rgba(54, 25, 25, .5);
+	}
+</style>
+<div class="jumbotron banner">
+    <h1><span class="label silo">Welcome to</span> </h1>
+    <h1><span class="label zf-green silo">Investors Assurance</span></h1>
 </div>
 
 <div class="row">
 
+    
+
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Follow Development') ?></h3>
+                <h3 class="panel-title"><?php echo $this->translate('Welcome!') ?></h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('Zend Framework 2 is under active development. If you are interested in following the development of ZF2, there is a special ZF2 portal on the official Zend Framework website which provides links to the ZF2 %swiki%s, %sdev blog%s, %sissue tracker%s, and much more. This is a great resource for staying up to date with the latest developments!'), '<a href="http://framework.zend.com/wiki/display/ZFDEV2/Home">', '</a>', '<a href="http://framework.zend.com/zf2/blog">', '</a>', '<a href="https://github.com/zendframework/zf2/issues">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://framework.zend.com/zf2" target="_blank"><?php echo $this->translate('ZF2 Development Portal') ?> &raquo;</a></p>
+            	<img src="/img/office-2-small.jpg" class="img-responsive thumbnail" />
+                <p>In our fast evolving environment, being resourceful in finding the best possible solutions to man's most complex problems has become inevitable.   Hence, with the countless tensions and uncertainties regarding the future and what it holds, the availment of  insurance by both individuals and businesses has not only become an option, but more a necessity and form  of survival.</p>
+                <p>Through the years, insurance has already proven its effectiveness and significantly reduced losses incurred by numerous individuals and business entities. It has allowed individuals or businesses to cope up with numerous risks accompanying the latest advancements in information technology and the uncertainties and abrupt changes in the environment.</p>
+                <p>As a product of mans' ingenuity, insurance, through pooling, has allowed individuals or businesses to alleviate their risks for large and uncertain losses in exchange of small and definite costs. As a result, maximum protection is guaranteed for their most valuable investments ...    </p>
             </div>
         </div>
     </div>
@@ -21,23 +32,29 @@
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Discover Modules') ?></h3>
+                <h3 class="panel-title"><?php echo $this->translate('About Us') ?></h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('The community is working on developing a community site to serve as a repository and gallery for ZF2 modules. The project is available %son GitHub%s. The site is currently live and currently contains a list of some of the modules already available for ZF2.'), '<a href="https://github.com/zendframework/modules.zendframework.com">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://modules.zendframework.com/" target="_blank"><?php echo $this->translate('Explore ZF2 Modules') ?> &raquo;</a></p>
+                <p>Sometime in 1964, the first incarnation of Investors Assurance Corporation came into existence.  Bearing the name “First Pan Asiatic Insurance Corporation”, the Corporation was formally organized and registered with the Securities and Exchange Commission on October 27 of the same year. </p>
+                <p>On 01 April 1978, a change in the composition of the Corporation took shape when a group of businessmen-bankers led by Messrs. Willy S. Co, Ramon L. Siy and Philip T. Ang acquired the holdings of Prof. Lope Leonio and his family in the Company.</p>
+                <p>In order to reflect such change in the Corporation, the new corporate name “INVESTORS ASSURANCE CORPORATION” was adapted and registered with the Securities and Exchange Commission on 25 September 1978. </p>
+                <p>From  then on, the Investors Assurance Corporation became a stable pillar in the industry while still maintaining its low-key operations. </p>
+                <p>The year 2002 heralded a new dynasty when the Corporation underwent yet another change in its composition when a new set of investors, spearheaded by St. Catherine Landholding and Development Corporation, infused new blood, capital and sense of direction. Taking over the ownership of the Company and complying with the mandatory paid-up capitalization of P 125,000,000.00, the new group was able to invigorate operations and keep up with the vision of the Corporation’s founding fathers. </p>
+                <p>On February 25, 2010, the company’s Administrative Order No. 280 was signed and released by the Office of the President of the Republic of the Philippines authorizing Investors Assurance Corporation to become a Surety. This gave the company an additional avenue for growth by providing an opportunity to operate on a full service capacity on surety lines, both civil and criminal.</p>
+                <p>With a strong financial position and with authority to operate on a full line scale, the insuring public is now best assured of Investors Assurance Corporation’s outstanding service and protection, which the company commits of consistently providing.</p>
+                
             </div>
         </div>
     </div>
-
     <div class="col-md-4">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <h3 class="panel-title"><?php echo $this->translate('Help &amp; Support') ?></h3>
+                <h3 class="panel-title"><?php echo $this->translate('Contact Us') ?></h3>
             </div>
             <div class="panel-body">
-                <p><?php echo sprintf($this->translate('If you need any help or support while developing with ZF2, you may reach us via IRC: %s#zftalk on Freenode%s. We\'d love to hear any questions or feedback you may have regarding the beta releases. Alternatively, you may subscribe and post questions to the %smailing lists%s.'), '<a href="irc://irc.freenode.net/zftalk">', '</a>', '<a href="http://framework.zend.com/wiki/display/ZFDEV/Mailing+Lists">', '</a>') ?></p>
-                <p><a class="btn btn-success pull-right" href="http://webchat.freenode.net?channels=zftalk" target="_blank"><?php echo $this->translate('Ping us on IRC') ?> &raquo;</a></p>
+                <p>For inquiries and other concerns, please visit  our offices or contact our available contact numbers found under the sattelite offices link on top of this page.
+ 
+You may also send us an email at inquiry@investors-assurance.com</p>
             </div>
         </div>
     </div>
