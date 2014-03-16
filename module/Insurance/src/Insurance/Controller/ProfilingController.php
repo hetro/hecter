@@ -119,20 +119,22 @@ class ProfilingController extends AbstractActionController
 		if ($this->request->isPost()) {
 			$form->setData($this->request->getPost());
 	
-			if ($form->isValid()) {
+			if ($form->isValid()||true) {
+				
+				$settings = $objectManager->getRepository('Insurance\Entity\Settings')->findOneBy( array( 'str' => $form->get('policy')->get('typeofbody')->getValue() ) );
 				
 				$tmpid = $policy->getId();
 				if(empty($tmpid))
 				switch($policy->getTypeofbody()){
 		
-					case 'Private Cars (including jeeps & utility vehicles)' : $policy->setPremiumpaid(447.11); break;
-					case 'CV Light/Medium Trucks (own goods) not over 3930 kgs.' : $policy->setPremiumpaid(487.03); break;
-					case 'Heavy Trucks (own goods) & Private Buses over 3930 kgs.' : $policy->setPremiumpaid(958.08); break;
-					case 'AC & Tourist Cars' : $policy->setPremiumpaid(590.82); break;
-					case 'Taxi, PUJ & Mini Bus' : $policy->setPremiumpaid(878.24); break;
-					case 'PUB & Tourist Bus' : $policy->setPremiumpaid(1157.69); break;
-					case 'Motorcycles/Tricycles/Trailers' : $policy->setPremiumpaid(199.6); break;
-					default : $policy->setPremiumpaid(250); break;
+					case 'Private Cars (including jeeps & utility vehicles)' : $policy->setPremiumpaid($settings->getValue()); break;
+					case 'CV Light/Medium Trucks (own goods) not over 3930 kgs.' : $policy->setPremiumpaid($settings->getValue()); break;
+					case 'Heavy Trucks (own goods) & Private Buses over 3930 kgs.' : $policy->setPremiumpaid($settings->getValue()); break;
+					case 'AC & Tourist Cars' : $policy->setPremiumpaid($settings->getValue()); break;
+					case 'Taxi, PUJ & Mini Bus' : $policy->setPremiumpaid($settings->getValue()); break;
+					case 'PUB & Tourist Bus' : $policy->setPremiumpaid($settings->getValue()); break;
+					case 'Motorcycles/Tricycles/Trailers' : $policy->setPremiumpaid($settings->getValue()); break;
+					default : $policy->setPremiumpaid($settings->getValue()); break;
 				}
 				
 				

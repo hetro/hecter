@@ -25,4 +25,37 @@ class InsuranceController extends AbstractActionController
 			));
         }
 	}
+	
+	public function settingsAction(){
+		if (!$this->zfcUserAuthentication()->hasIdentity()) {			
+			
+			$redirect = $this->getRequest()->getRequestUri();			
+			$this->getRequest()->getQuery()->set('redirect', $redirect);
+			return $this->forward()->dispatch('zfcuser', array(
+				'action' => 'login'
+			));
+        }
+		
+		$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
+		
+		$settings = $objectManager->getRepository('Insurance\Entity\Settings')->findAll();
+		
+		
+		if ($this->request->isPost()) {
+			$validator = new \Zend\I18n\Validator\Float();
+			
+			foreach($this->request->getPost() as $k => $request){
+				if($validator->isValid($request)) {
+					$tmp = $objectManager->getRepository('Insurance\Entity\Settings')->find( $k );
+					$tmp->setValue($request);
+					if($tmp) $objectManager->persist($tmp);
+				}
+			}
+			
+			$objectManager->flush();
+		}
+		
+		
+		return array( 'settings' => $settings );
+	}
 }

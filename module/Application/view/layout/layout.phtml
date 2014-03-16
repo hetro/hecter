@@ -48,7 +48,7 @@ $systemTitle = 'Insurance';
                     <a style="color:#F93" class="navbar-brand" href="<?php echo $this->url('home') ?>"><?php echo $this->translate($systemTitle) ?></a>
                 </div>
                 <div class="collapse navbar-collapse">
-                
+                	
                     <?php echo $this->navigation('navigation')->menu()->setUlClass('nav navbar-nav'); ?>
                     <ul class="nav navbar-nav navbar-right">
       
@@ -75,6 +75,9 @@ $systemTitle = 'Insurance';
                         
                         
                     </ul>
+                    <ul class="nav navbar-nav">
+                    	<li><a href="<?=$this->url('insurance/action',array('action' => 'settings'))?>">Settings</a></li>
+                    </ul>
                 </div><!--/.nav-collapse -->
             </div>
         </nav>
@@ -82,7 +85,7 @@ $systemTitle = 'Insurance';
             <?php echo $this->content; ?>
             <hr>
             <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
+                <p>&copy; 2005 - <?php echo date('Y') ?> by Investors Assurance <?php echo $this->translate('All rights reserved.') ?></p>
             </footer>
         </div> <!-- /container -->
         <?php echo $this->inlineScript() ?>

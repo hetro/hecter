@@ -24,8 +24,13 @@ class MonitoringController extends AbstractActionController
 			));
         }
 		
+		$key = $this->params()->fromQuery('search');
+		$key = str_replace('-',' ',$key);
+		
 		$objectManager = $this->getServiceLocator()->get('Doctrine\ORM\EntityManager');
-		$query = $objectManager->createQuery("SELECT c FROM Insurance\Entity\Policy c ORDER BY c.id DESC");
+		$query = $objectManager->createQuery("SELECT c FROM Insurance\Entity\Policy c ".(isset($key)?" WHERE c.no LIKE ?1 OR c.isap LIKE ?1 OR c.lto LIKE ?1 OR c.name LIKE ?1 OR c.address LIKE ?1 OR c.businessandprofession LIKE ?1 OR c.certificateofcover LIKE ?1 OR c.officialreceipt LIKE ?1 OR c.model LIKE ?1 OR c.make LIKE ?1 OR c.typeofbody LIKE ?1 OR c.bltfilenumber LIKE ?1 OR c.platenumber LIKE ?1 OR c.chassisnumber LIKE ?1 OR c.motornumber LIKE ?1 OR c.claimstatus LIKE ?1":"")." ORDER BY c.id DESC");
+		$query->setParameter(1, '%'.$key.'%');
+		
 		$list = $query->getResult();
 		
 		return array('list' => $list);	

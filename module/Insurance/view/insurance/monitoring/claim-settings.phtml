@@ -1,12 +1,22 @@
-<a href="<?=$this->url('profiling/action', array('action' => 'certificateofcover'))?>"><span class="btn btn-success fileinput-button btn-xs">
-            <i class="glyphicon glyphicon-plus"></i>
-            <span>Add Certificate of Cover</span>
-            
-        </span></a>
+<script type="text/javascript">
+$(function(){
+	$("#search").keypress(function(e){
+			if(e.which == 13) {
+				var string = $(this).val();
+				var replaced = string.replace(/ /g,'-');
+				window.location = '?search='+replaced;	
+			}
+		});
+	});
+</script>
+
+<ul class="nav nav-pills">
+  <li><a><input type="text" value="" id="search" class="form-control" placeholder="search" /></a></li>
+</ul>
 
 <table class="table">
 	<tr bgcolor="#333333">
-    	<td style="color:white">No.</td>
+    	<td style="color:white" width="10%">No.</td>
         <td style="color:white">Name of Assured</td>
         <td style="color:white">Start of Insurance</td>
         <td style="color:white">End of Insurance</td>

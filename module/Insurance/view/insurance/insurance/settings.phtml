@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    	<h1>Defaults</h1>
+        <form method="post" action="">
+        
+        <?php foreach($settings as $setting) : ?>
+        
+        <?=$setting->getStr()?>
+        <input class="form-control" type="text" name="<?=$setting->getId()?>" value="<?=$setting->getValue()?>"/>
+        <?php endforeach; ?>
+        
+        <br />
+        <input type="submit" class="btn btn-block btn-success" value="Save"/>
+        </form>
+    </div>
+</div>
