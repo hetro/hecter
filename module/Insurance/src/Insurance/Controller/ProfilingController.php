@@ -119,7 +119,7 @@ class ProfilingController extends AbstractActionController
 		if ($this->request->isPost()) {
 			$form->setData($this->request->getPost());
 	
-			if ($form->isValid()||true) {
+			if ($form->isValid()) {
 				
 				$settings = $objectManager->getRepository('Insurance\Entity\Settings')->findOneBy( array( 'str' => $form->get('policy')->get('typeofbody')->getValue() ) );
 				
@@ -137,9 +137,10 @@ class ProfilingController extends AbstractActionController
 					default : $policy->setPremiumpaid($settings->getValue()); break;
 				}
 				
+				$authfee  = $objectManager->getRepository('Insurance\Entity\Settings')->findOneBy( array( 'str' => 'Authentication Fee' ) );
+				if ($authfee) $policy->setDatecreated( $authfee->getValue );
 				
 				$policy->setDatecreated(new \DateTime("now"));
-				
 				$policy->setVat( $policy->getPremiumpaid() * .12 );
 				$policy->setStamps( $policy->getPremiumpaid() * .12 );
 				$policy->setLgt( $policy->getPremiumpaid() * .0075 );
