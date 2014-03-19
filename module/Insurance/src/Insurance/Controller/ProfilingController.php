@@ -138,7 +138,7 @@ class ProfilingController extends AbstractActionController
 				}
 				
 				$authfee  = $objectManager->getRepository('Insurance\Entity\Settings')->findOneBy( array( 'str' => 'Authentication Fee' ) );
-				if ($authfee) $policy->setDatecreated( $authfee->getValue );
+				if ($authfee) $policy->setAuthenticationfee( $authfee->getValue() );
 				
 				$policy->setDatecreated(new \DateTime("now"));
 				$policy->setVat( $policy->getPremiumpaid() * .12 );
